@@ -10,7 +10,7 @@ preload(){
     //a sprite refers to a 2D image or animation that represents an object in the game
     this.load.image('player','assets/alien.svg');
 
-    this.load.image('coin','assets/coin.jpg');
+    this.load.image('coin','assets/coin.png');
 }
 
 
@@ -23,8 +23,8 @@ preload(){
 
     this.coin=this.physics.add.sprite(300,300,'coin');
 
-    this.player.setDisplaySize(30,30);
-    this.coin.setDisplaySize(20,20);
+    this.player.setDisplaySize(60,60);
+    this.coin.setDisplaySize(30,30);
 
 
     this.score=0;
@@ -99,17 +99,21 @@ preload(){
             scaleY: 1.2, 
             yoyo: true, //at end goes back to original scale
             onComplete:()=>{
-                this.player.setDisplaySize(30,30);
+                this.player.setDisplaySize(60,60);
             }
         });
 }
 }
 
 new Phaser.Game({
-    width:700,
+    width: Math.min(window.innerWidth, 800),
     height:400,
     backgroundColor: '#3498db',
     scene:mainScene,
     physics:{default:'arcade'},
     parent:'game',//Create the game inside the <div id="game"> 
+});
+
+window.addEventListener('resize', () => {
+    game.resize(window.innerWidth, window.innerHeight); // Adjust size on resize
 });

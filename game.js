@@ -88,15 +88,15 @@ preload(){
         this.coin.y=Phaser.Math.Between(100,300);
 
         //increase score when collision with coin
-        this.score+=10;
+        this.score+=1;
 
         this.scoreText.setText('score: '+this.score);
         
         this.tweens.add({
             targets: this.player, 
-            duration: 200, //for 200ms
-            scaleX: 1.2, //20% increase
-            scaleY: 1.2, 
+            duration: 80, //ms
+            scaleX: 0.2, //increase
+            scaleY: 0.2, 
             yoyo: true, //at end goes back to original scale
             onComplete:()=>{
                 this.player.setDisplaySize(60,60);
